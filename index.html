@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f7f2">
+  <meta name="description" content="ProofLayer Local — a privacy-first, browser-based evidence checker for AI-generated claims.">
+  <title>ProofLayer Local — Evidence, not assumptions</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="ProofLayer home">
+      <span class="brand-mark" aria-hidden="true">P<span>·</span></span>
+      <span>ProofLayer <small>LOCAL</small></span>
+    </a>
+    <div class="privacy-chip"><span class="pulse"></span> Browser-only processing</div>
+  </header>
+
+  <main class="shell">
+    <section class="hero">
+      <p class="eyebrow">EVIDENCE-FIRST REVIEW WORKSPACE</p>
+      <h1>Don't just trust the answer.<br><em>Trace the evidence.</em></h1>
+      <p class="hero-copy">Check AI-generated claims against the source material that is supposed to support them. Every result points back to evidence—or tells you when a human should take a closer look.</p>
+      <div class="trust-row">
+        <span><span class="check">✓</span> No account</span>
+        <span><span class="check">✓</span> No API key</span>
+        <span><span class="check">✓</span> Text stays in this tab</span>
+      </div>
+    </section>
+
+    <section class="workspace" aria-label="Claim verification workspace">
+      <div class="workspace-heading">
+        <div><p class="eyebrow">WORKSPACE 01</p><h2>New evidence review</h2></div>
+        <button id="exampleBtn" class="button button-quiet" type="button">Load example ↗</button>
+      </div>
+
+      <div class="input-grid">
+        <section class="input-card">
+          <div class="card-heading"><span class="step">01</span><label for="sourceText">Source material</label><span class="optional">REQUIRED</span></div>
+          <p class="field-help">Paste the policy, article, report, or other text you want to treat as the source of truth.</p>
+          <textarea id="sourceText" rows="10" placeholder="Paste source text here…" spellcheck="false"></textarea>
+          <div class="field-footer"><span id="sourceCount">0 characters</span><button class="text-button" id="clearSource" type="button">Clear</button></div>
+        </section>
+
+        <section class="input-card">
+          <div class="card-heading"><span class="step">02</span><label for="claimsText">AI-generated answer</label><span class="optional">REQUIRED</span></div>
+          <p class="field-help">Paste the answer you want to check. Use one claim per line for the clearest results.</p>
+          <textarea id="claimsText" rows="10" placeholder="Paste AI-generated claims here…" spellcheck="false"></textarea>
+          <div class="field-footer"><span id="claimsCount">0 characters</span><button class="text-button" id="clearClaims" type="button">Clear</button></div>
+        </section>
+      </div>
+
+      <div class="run-row">
+        <p><span class="lock">▣</span> Analysis runs locally in your browser. Nothing is uploaded by this tool.</p>
+        <button class="button button-primary" id="runBtn" type="button"><span>Run evidence check</span><span aria-hidden="true">→</span></button>
+      </div>
+      <p class="error-message" id="errorMessage" role="alert" hidden></p>
+    </section>
+
+    <section class="results" id="results" hidden aria-live="polite">
+      <div class="results-header">
+        <div><p class="eyebrow">REVIEW OUTPUT</p><h2>Evidence ledger</h2><p class="results-subtitle" id="resultsSubtitle">Each claim gets an evidence trail.</p></div>
+        <div class="export-actions"><button class="button button-quiet" id="exportJson" type="button">Export JSON ↓</button><button class="button button-quiet" id="exportCsv" type="button">Export CSV ↓</button></div>
+      </div>
+      <div class="summary-grid" id="summaryGrid"></div>
+      <div class="ledger-heading"><h3>Claim-by-claim findings</h3><span id="claimTotal"></span></div>
+      <div id="ledger" class="ledger"></div>
+      <p class="method-note"><strong>Important:</strong> these findings are produced by transparent text-matching heuristics, not a language model or a proof of truth. Similar wording can still be wrong, and paraphrases may be missed. Always check the cited source passages before relying on a result.</p>
+    </section>
+
+    <section class="how-section">
+      <div><p class="eyebrow">DESIGNED FOR REVIEWERS</p><h2>Evidence you can inspect.<br>Limits you can see.</h2></div>
+      <div class="how-cards">
+        <article><span class="how-icon">01</span><h3>Ground every claim</h3><p>Keep the source and generated answer side-by-side, then inspect the supporting passage for each finding.</p></article>
+        <article><span class="how-icon">02</span><h3>Flag the uncertain</h3><p>When the text is too ambiguous or a claim cannot be matched, the tool should say so instead of pretending to know.</p></article>
+        <article><span class="how-icon">03</span><h3>Keep data local</h3><p>This static site has no backend, analytics, external libraries, or network-based AI calls. Your text is processed in the page.</p></article>
+      </div>
+    </section>
+
+    <footer><span>PROOFLAYER LOCAL · EARLY PROTOTYPE</span><span>Built for careful humans, not blind trust.</span></footer>
+  </main>
+</body>
+</html>
