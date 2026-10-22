@@ -1,0 +1,8 @@
+# Operating system/editor noise
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Temporary logs
+*.log
